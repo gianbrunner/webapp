@@ -1,9 +1,14 @@
 # Routes
 # This file defines all application routes (Higher priority routes first)
 # ~~~~
-
 # An example controller showing a sample home page
 GET     /                           controllers.HomeController.index
 
 # Map static resources from the /public folder to the /assets URL path
 GET     /assets/*file               controllers.Assets.versioned(path="/public", file: Asset)
+#Routes for Book Project
+GET     /api/books                  controllers.Application.getAllBooks()
+PUT     /api/books/                 controllers.Application.createNewBook()
+PUT     /api/books/:id              controllers.Application.changeBook(id: Long)
+GET     /api/books/:id              controllers.Application.getBook(id: Long)
+DELETE  /api/books/:id              controllers.Application.deleteBook(id: Long)

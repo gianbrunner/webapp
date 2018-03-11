@@ -1,0 +1,3 @@
+[0m[[0m[31merror[0m] [0m[0mD:\NTB\IuK_2\Webtech\iuk_ii_w\conf\routes:14:1: no arguments allowed for nullary method searchBook: ()play.mvc.Result[0m
+[0m[[0m[31merror[0m] [0m[0mGET     /api/books/:name            controllers.Application.searchBook(name: String)[0m
+[0m[[0m[31merror[0m] [0m[0mone error found[0m
