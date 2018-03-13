@@ -1,7 +1,7 @@
 
 // @GENERATOR:play-routes-compiler
 // @SOURCE:D:/NTB/IuK_2/Webtech/iuk_ii_w/conf/routes
-// @DATE:Tue Feb 27 21:52:58 CET 2018
+// @DATE:Tue Mar 06 15:31:02 CET 2018
 
 
 package router {

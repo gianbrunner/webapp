@@ -7,8 +7,8 @@ GET     /                           controllers.HomeController.index
 # Map static resources from the /public folder to the /assets URL path
 GET     /assets/*file               controllers.Assets.versioned(path="/public", file: Asset)
 #Routes for Book Project
-GET     /api/books                  controllers.Application.getAllBooks()
-PUT     /api/books/                 controllers.Application.createNewBook()
-PUT     /api/books/:id              controllers.Application.changeBook(id: Long)
-GET     /api/books/:id              controllers.Application.getBook(id: Long)
-DELETE  /api/books/:id              controllers.Application.deleteBook(id: Long)
+GET     /api/books                  controllers.BookController.getAllBooks(q: String ?= null)
+POST    /api/books/                 controllers.BookController.createNewBook()
+PUT     /api/books/:id              controllers.BookController.changeBook(id: Long)
+GET     /api/books/:id              controllers.BookController.getBook(id: Long)
+DELETE  /api/books/:id              controllers.BookController.deleteBook(id: Long)

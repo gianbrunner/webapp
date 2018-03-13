@@ -1,7 +1,7 @@
 
 // @GENERATOR:play-routes-compiler
 // @SOURCE:D:/NTB/IuK_2/Webtech/iuk_ii_w/conf/routes
-// @DATE:Tue Feb 27 21:52:58 CET 2018
+// @DATE:Tue Mar 06 15:31:02 CET 2018
 
 package router
 
@@ -16,27 +16,27 @@ import _root_.play.libs.F
 class Routes(
   override val errorHandler: play.api.http.HttpErrorHandler, 
   // @LINE:5
-  HomeController_0: controllers.HomeController,
+  HomeController_1: controllers.HomeController,
   // @LINE:8
   Assets_2: controllers.Assets,
   // @LINE:10
-  Application_1: controllers.Application,
+  BookController_0: controllers.BookController,
   val prefix: String
 ) extends GeneratedRouter {
 
    @javax.inject.Inject()
    def this(errorHandler: play.api.http.HttpErrorHandler,
     // @LINE:5
-    HomeController_0: controllers.HomeController,
+    HomeController_1: controllers.HomeController,
     // @LINE:8
     Assets_2: controllers.Assets,
     // @LINE:10
-    Application_1: controllers.Application
-  ) = this(errorHandler, HomeController_0, Assets_2, Application_1, "/")
+    BookController_0: controllers.BookController
+  ) = this(errorHandler, HomeController_1, Assets_2, BookController_0, "/")
 
   def withPrefix(prefix: String): Routes = {
     router.RoutesPrefix.setPrefix(prefix)
-    new Routes(errorHandler, HomeController_0, Assets_2, Application_1, prefix)
+    new Routes(errorHandler, HomeController_1, Assets_2, BookController_0, prefix)
   }
 
   private[this] val defaultPrefix: String = {
@@ -46,11 +46,11 @@ class Routes(
   def documentation = List(
     ("""GET""", this.prefix, """controllers.HomeController.index"""),
     ("""GET""", this.prefix + (if(this.prefix.endsWith("/")) "" else "/") + """assets/""" + "$" + """file<.+>""", """controllers.Assets.versioned(path:String = "/public", file:Asset)"""),
-    ("""GET""", this.prefix + (if(this.prefix.endsWith("/")) "" else "/") + """api/books""", """controllers.Application.getAllBooks()"""),
-    ("""PUT""", this.prefix + (if(this.prefix.endsWith("/")) "" else "/") + """api/books/""", """controllers.Application.createNewBook()"""),
-    ("""PUT""", this.prefix + (if(this.prefix.endsWith("/")) "" else "/") + """api/books/""" + "$" + """id<[^/]+>""", """controllers.Application.changeBook(id:Long)"""),
-    ("""GET""", this.prefix + (if(this.prefix.endsWith("/")) "" else "/") + """api/books/""" + "$" + """id<[^/]+>""", """controllers.Application.getBook(id:Long)"""),
-    ("""DELETE""", this.prefix + (if(this.prefix.endsWith("/")) "" else "/") + """api/books/""" + "$" + """id<[^/]+>""", """controllers.Application.deleteBook(id:Long)"""),
+    ("""GET""", this.prefix + (if(this.prefix.endsWith("/")) "" else "/") + """api/books""", """controllers.BookController.getAllBooks(q:String ?= null)"""),
+    ("""POST""", this.prefix + (if(this.prefix.endsWith("/")) "" else "/") + """api/books/""", """controllers.BookController.createNewBook()"""),
+    ("""PUT""", this.prefix + (if(this.prefix.endsWith("/")) "" else "/") + """api/books/""" + "$" + """id<[^/]+>""", """controllers.BookController.changeBook(id:Long)"""),
+    ("""GET""", this.prefix + (if(this.prefix.endsWith("/")) "" else "/") + """api/books/""" + "$" + """id<[^/]+>""", """controllers.BookController.getBook(id:Long)"""),
+    ("""DELETE""", this.prefix + (if(this.prefix.endsWith("/")) "" else "/") + """api/books/""" + "$" + """id<[^/]+>""", """controllers.BookController.deleteBook(id:Long)"""),
     Nil
   ).foldLeft(List.empty[(String,String,String)]) { (s,e) => e.asInstanceOf[Any] match {
     case r @ (_,_,_) => s :+ r.asInstanceOf[(String,String,String)]
@@ -63,7 +63,7 @@ class Routes(
     PathPattern(List(StaticPart(this.prefix)))
   )
   private[this] lazy val controllers_HomeController_index0_invoker = createInvoker(
-    HomeController_0.index,
+    HomeController_1.index,
     play.api.routing.HandlerDef(this.getClass.getClassLoader,
       "router",
       "controllers.HomeController",
@@ -98,16 +98,16 @@ class Routes(
   )
 
   // @LINE:10
-  private[this] lazy val controllers_Application_getAllBooks2_route = Route("GET",
+  private[this] lazy val controllers_BookController_getAllBooks2_route = Route("GET",
     PathPattern(List(StaticPart(this.prefix), StaticPart(this.defaultPrefix), StaticPart("api/books")))
   )
-  private[this] lazy val controllers_Application_getAllBooks2_invoker = createInvoker(
-    Application_1.getAllBooks(),
+  private[this] lazy val controllers_BookController_getAllBooks2_invoker = createInvoker(
+    BookController_0.getAllBooks(fakeValue[String]),
     play.api.routing.HandlerDef(this.getClass.getClassLoader,
       "router",
-      "controllers.Application",
+      "controllers.BookController",
       "getAllBooks",
-      Nil,
+      Seq(classOf[String]),
       "GET",
       this.prefix + """api/books""",
       """Routes for Book Project""",
@@ -116,17 +116,17 @@ class Routes(
   )
 
   // @LINE:11
-  private[this] lazy val controllers_Application_createNewBook3_route = Route("PUT",
+  private[this] lazy val controllers_BookController_createNewBook3_route = Route("POST",
     PathPattern(List(StaticPart(this.prefix), StaticPart(this.defaultPrefix), StaticPart("api/books/")))
   )
-  private[this] lazy val controllers_Application_createNewBook3_invoker = createInvoker(
-    Application_1.createNewBook(),
+  private[this] lazy val controllers_BookController_createNewBook3_invoker = createInvoker(
+    BookController_0.createNewBook(),
     play.api.routing.HandlerDef(this.getClass.getClassLoader,
       "router",
-      "controllers.Application",
+      "controllers.BookController",
       "createNewBook",
       Nil,
-      "PUT",
+      "POST",
       this.prefix + """api/books/""",
       """""",
       Seq()
@@ -134,14 +134,14 @@ class Routes(
   )
 
   // @LINE:12
-  private[this] lazy val controllers_Application_changeBook4_route = Route("PUT",
+  private[this] lazy val controllers_BookController_changeBook4_route = Route("PUT",
     PathPattern(List(StaticPart(this.prefix), StaticPart(this.defaultPrefix), StaticPart("api/books/"), DynamicPart("id", """[^/]+""",true)))
   )
-  private[this] lazy val controllers_Application_changeBook4_invoker = createInvoker(
-    Application_1.changeBook(fakeValue[Long]),
+  private[this] lazy val controllers_BookController_changeBook4_invoker = createInvoker(
+    BookController_0.changeBook(fakeValue[Long]),
     play.api.routing.HandlerDef(this.getClass.getClassLoader,
       "router",
-      "controllers.Application",
+      "controllers.BookController",
       "changeBook",
       Seq(classOf[Long]),
       "PUT",
@@ -152,14 +152,14 @@ class Routes(
   )
 
   // @LINE:13
-  private[this] lazy val controllers_Application_getBook5_route = Route("GET",
+  private[this] lazy val controllers_BookController_getBook5_route = Route("GET",
     PathPattern(List(StaticPart(this.prefix), StaticPart(this.defaultPrefix), StaticPart("api/books/"), DynamicPart("id", """[^/]+""",true)))
   )
-  private[this] lazy val controllers_Application_getBook5_invoker = createInvoker(
-    Application_1.getBook(fakeValue[Long]),
+  private[this] lazy val controllers_BookController_getBook5_invoker = createInvoker(
+    BookController_0.getBook(fakeValue[Long]),
     play.api.routing.HandlerDef(this.getClass.getClassLoader,
       "router",
-      "controllers.Application",
+      "controllers.BookController",
       "getBook",
       Seq(classOf[Long]),
       "GET",
@@ -170,14 +170,14 @@ class Routes(
   )
 
   // @LINE:14
-  private[this] lazy val controllers_Application_deleteBook6_route = Route("DELETE",
+  private[this] lazy val controllers_BookController_deleteBook6_route = Route("DELETE",
     PathPattern(List(StaticPart(this.prefix), StaticPart(this.defaultPrefix), StaticPart("api/books/"), DynamicPart("id", """[^/]+""",true)))
   )
-  private[this] lazy val controllers_Application_deleteBook6_invoker = createInvoker(
-    Application_1.deleteBook(fakeValue[Long]),
+  private[this] lazy val controllers_BookController_deleteBook6_invoker = createInvoker(
+    BookController_0.deleteBook(fakeValue[Long]),
     play.api.routing.HandlerDef(this.getClass.getClassLoader,
       "router",
-      "controllers.Application",
+      "controllers.BookController",
       "deleteBook",
       Seq(classOf[Long]),
       "DELETE",
@@ -193,7 +193,7 @@ class Routes(
     // @LINE:5
     case controllers_HomeController_index0_route(params@_) =>
       call { 
-        controllers_HomeController_index0_invoker.call(HomeController_0.index)
+        controllers_HomeController_index0_invoker.call(HomeController_1.index)
       }
   
     // @LINE:8
@@ -203,33 +203,33 @@ class Routes(
       }
   
     // @LINE:10
-    case controllers_Application_getAllBooks2_route(params@_) =>
-      call { 
-        controllers_Application_getAllBooks2_invoker.call(Application_1.getAllBooks())
+    case controllers_BookController_getAllBooks2_route(params@_) =>
+      call(params.fromQuery[String]("q", Some(null))) { (q) =>
+        controllers_BookController_getAllBooks2_invoker.call(BookController_0.getAllBooks(q))
       }
   
     // @LINE:11
-    case controllers_Application_createNewBook3_route(params@_) =>
+    case controllers_BookController_createNewBook3_route(params@_) =>
       call { 
-        controllers_Application_createNewBook3_invoker.call(Application_1.createNewBook())
+        controllers_BookController_createNewBook3_invoker.call(BookController_0.createNewBook())
       }
   
     // @LINE:12
-    case controllers_Application_changeBook4_route(params@_) =>
+    case controllers_BookController_changeBook4_route(params@_) =>
       call(params.fromPath[Long]("id", None)) { (id) =>
-        controllers_Application_changeBook4_invoker.call(Application_1.changeBook(id))
+        controllers_BookController_changeBook4_invoker.call(BookController_0.changeBook(id))
       }
   
     // @LINE:13
-    case controllers_Application_getBook5_route(params@_) =>
+    case controllers_BookController_getBook5_route(params@_) =>
       call(params.fromPath[Long]("id", None)) { (id) =>
-        controllers_Application_getBook5_invoker.call(Application_1.getBook(id))
+        controllers_BookController_getBook5_invoker.call(BookController_0.getBook(id))
       }
   
     // @LINE:14
-    case controllers_Application_deleteBook6_route(params@_) =>
+    case controllers_BookController_deleteBook6_route(params@_) =>
       call(params.fromPath[Long]("id", None)) { (id) =>
-        controllers_Application_deleteBook6_invoker.call(Application_1.deleteBook(id))
+        controllers_BookController_deleteBook6_invoker.call(BookController_0.deleteBook(id))
       }
   }
 }
